@@ -47,3 +47,28 @@ jinja2.exceptions.UndefinedError: 'form' is undefined
 2021-06-25 11:02:12,547 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
 2021-06-25 11:03:54,293 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
 2021-06-25 11:07:11,042 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 08:11:34,690 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 10:23:50,800 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 10:24:04,672 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 10:24:07,225 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/a/Project/microblog/app/routes.py", line 29, in index
+    posts = current_user.followed_posts().paginate(page, app.confg['POSTS_PRE_PAGE'], False)
+AttributeError: 'Flask' object has no attribute 'confg'
+2021-06-26 10:24:22,266 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 10:37:44,810 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-26 10:44:17,379 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
