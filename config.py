@@ -15,8 +15,9 @@ class Config(object):
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	ADMINS = ['your-email@example.com']
-	LANGUAGES = ['en', 'zh-cn']
+	LANGUAGES = ['en', 'es']
+	ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
 
-	POSTS_PRE_PAGE = 3 # 每页展示数量
+	POSTS_PER_PAGE = 20 # 每页展示数量
 	
 		
