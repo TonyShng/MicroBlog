@@ -1,12 +1,54 @@
-2021-06-24 17:01:51,658 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 08:48:44,928 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 08:49:17,037 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 08:49:29,413 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 10:12:26,975 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 10:13:06,736 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 10:31:23,524 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 11:00:12,213 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 11:00:14,168 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
+2021-06-30 10:46:49,631 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-30 10:48:06,649 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-06-30 11:10:00,411 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+2021-07-02 10:33:12,711 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:68]
+2021-07-02 10:33:16,122 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1948, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2242, in preprocess_request
+    rv = func()
+  File "/Users/a/Project/microblog/app/main/routes.py", line 18, in before_request
+    g.locale = str(get_locale())
+  File "/usr/local/lib/python3.9/site-packages/flask_babel/__init__.py", line 226, in get_locale
+    rv = babel.locale_selector_func()
+  File "/Users/a/Project/microblog/app/__init__.py", line 76, in get_locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+NameError: name 'app' is not defined
+2021-07-02 10:34:25,259 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:68]
+2021-07-02 10:34:27,091 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1948, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2242, in preprocess_request
+    rv = func()
+  File "/Users/a/Project/microblog/app/main/routes.py", line 18, in before_request
+    g.locale = str(get_locale())
+  File "/usr/local/lib/python3.9/site-packages/flask_babel/__init__.py", line 230, in get_locale
+    locale = Locale.parse(rv)
+  File "/usr/local/lib/python3.9/site-packages/babel/core.py", line 268, in parse
+    parts = parse_locale(identifier, sep=sep)
+  File "/usr/local/lib/python3.9/site-packages/babel/core.py", line 1094, in parse_locale
+    raise ValueError('expected only letters, got %r' % lang)
+ValueError: expected only letters, got 'zh-cn'
+2021-07-02 10:35:59,306 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:68]
+2021-07-02 10:36:01,181 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -22,8 +64,28 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 38, in index
-    return render_template('index.html', title='Home Page', posts=posts)
+  File "/Users/a/Project/microblog/app/main/routes.py", line 38, in index
+    page, current_app.config['POSTS_PER_PAGE'], False)
+KeyError: 'POSTS_PER_PAGE'
+2021-07-02 10:37:33,409 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:68]
+2021-07-02 10:37:35,217 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/a/Project/microblog/app/main/routes.py", line 41, in index
+    return render_template('index.html', title=_('Home'), form=form,
   File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 137, in render_template
     return _render(
   File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 120, in _render
@@ -34,83 +96,28 @@ Traceback (most recent call last):
     reraise(*rewrite_traceback_stack(source=source))
   File "/usr/local/lib/python3.9/site-packages/jinja2/_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "/Users/a/Project/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/a/Project/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/a/Project/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2021-06-25 11:02:02,018 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 11:02:12,547 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 11:03:54,293 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-25 11:07:11,042 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 08:11:34,690 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 10:23:50,800 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 10:24:04,672 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 10:24:07,225 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+  File "/Users/a/Project/microblog/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/a/Project/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 3, in block "doc"
+    <html{% block html_attribs %}{% endblock html_attribs %}>
+  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 11, in block "html"
+    {%- endblock metas %}
+  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 12, in block "body"
+  File "/Users/a/Project/microblog/app/templates/base.html", line 18, in block "navbar"
+    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+  File "/usr/local/lib/python3.9/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2216, in handle_url_build_error
     reraise(exc_type, exc_value, tb)
   File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 29, in index
-    posts = current_user.followed_posts().paginate(page, app.confg['POSTS_PRE_PAGE'], False)
-AttributeError: 'Flask' object has no attribute 'confg'
-2021-06-26 10:24:22,266 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 10:37:44,810 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-26 10:44:17,379 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 09:09:26,962 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 09:10:47,550 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 11:29:43,573 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 11:31:14,686 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 11:31:17,621 ERROR: Exception on / [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 34, in index
-    return render_template('index.html', title='Home Page', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/usr/local/lib/python3.9/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/a/Project/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/usr/local/lib/python3.9/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/a/Project/microblog/app/templates/base.html", line 46, in template
-    {% endwith %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endwith'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
-2021-06-29 11:32:47,098 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+  File "/usr/local/lib/python3.9/site-packages/flask/helpers.py", line 357, in url_for
+    rv = url_adapter.build(
+  File "/usr/local/lib/python3.9/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2021-07-02 10:41:54,488 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:68]

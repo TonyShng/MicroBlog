@@ -1,4 +1,48 @@
-2021-06-29 12:21:08,031 ERROR: Exception on /user/susan [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
+2021-07-02 12:19:47,859 ERROR: Exception on /search [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/connection/http_urllib3.py", line 251, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.9/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/Cellar/python@3.9/3.9.2_2/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/Cellar/python@3.9/3.9.2_2/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python@3.9/3.9.2_2/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python@3.9/3.9.2_2/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/local/Cellar/python@3.9/3.9.2_2/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1115f6dc0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,130 +58,21 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 85, in user
-    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/usr/local/lib/python3.9/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/a/Project/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/a/Project/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 13, in block "body"
-    {%- block styles %}
-  File "/Users/a/Project/microblog/app/templates/base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/a/Project/microblog/app/templates/user.html", line 24, in block "app_content"
-    {{ form.hidden_tag() }}
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2021-06-29 12:22:17,514 ERROR: Exception on /user/susan [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 85, in user
-    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/usr/local/lib/python3.9/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/usr/local/lib/python3.9/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/a/Project/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/a/Project/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "/usr/local/lib/python3.9/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 13, in block "body"
-    {%- block styles %}
-  File "/Users/a/Project/microblog/app/templates/base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/a/Project/microblog/app/templates/user.html", line 24, in block "app_content"
-    {{ form.hidden_tag() }}
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2021-06-29 12:25:32,115 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 12:25:36,406 ERROR: Exception on /user/susan [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 85, in user
-    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url, form=form)
-NameError: name 'form' is not defined
-2021-06-29 12:26:02,565 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 12:26:05,972 ERROR: Exception on /user/susan [GET] [in /usr/local/lib/python3.9/site-packages/flask/app.py:(lineno)d]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/a/Project/microblog/app/routes.py", line 85, in user
-    form = EmptyForm()
-NameError: name 'EmptyForm' is not defined
-2021-06-29 12:27:53,324 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 17:01:25,266 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 17:04:35,559 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 17:13:48,710 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-29 17:17:32,259 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-30 08:57:33,980 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-30 09:04:26,039 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-30 09:11:09,722 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
-2021-06-30 09:37:49,869 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:(lineno)d]
+  File "/Users/a/Project/microblog/app/main/routes.py", line 138, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+  File "/Users/a/Project/microblog/app/models.py", line 79, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "/Users/a/Project/microblog/app/search.py", line 19, in query_index
+    search = current_app.elasticsearch.search(
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/client/utils.py", line 168, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/client/__init__.py", line 1670, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/transport.py", line 413, in perform_request
+    raise e
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/transport.py", line 381, in perform_request
+    status, headers_response, data = connection.perform_request(
+  File "/usr/local/lib/python3.9/site-packages/elasticsearch/connection/http_urllib3.py", line 264, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x1115f6dc0>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x1115f6dc0>: Failed to establish a new connection: [Errno 61] Connection refused)
+2021-07-03 09:20:27,592 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
