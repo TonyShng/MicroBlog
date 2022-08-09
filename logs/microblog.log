@@ -76,3 +76,7 @@ Traceback (most recent call last):
     raise ConnectionError("N/A", str(e), e)
 elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x1097fc160>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x1097fc160>: Failed to establish a new connection: [Errno 61] Connection refused)
 2021-07-09 10:23:28,693 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
+2021-07-15 15:53:16,845 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
+2021-07-16 09:55:42,647 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
+2021-07-20 09:06:21,492 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
+2021-09-02 14:02:09,872 INFO: Microblog startup [in /Users/a/Project/microblog/app/__init__.py:71]
